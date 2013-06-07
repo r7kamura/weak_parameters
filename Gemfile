@@ -1,4 +1,8 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in weak_parameters.gemspec
 gemspec
+
+group :test do
+  gem "pry-rails"
+  gem "rspec-rails"
+end

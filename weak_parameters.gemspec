@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = WeakParameters::VERSION
   spec.authors       = ["Ryo Nakamura"]
   spec.email         = ["r7kamura@gmail.com"]
-  spec.summary       = "Validates parameters for your controllers"
+  spec.summary       = "Add a validation filter to your controller."
   spec.homepage      = "https://github.com/r7kamura/weak_parameters"
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails", ">= 3.2.11"
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "sqlite3"
 end
