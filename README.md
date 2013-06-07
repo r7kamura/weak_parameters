@@ -39,8 +39,8 @@ WeakParameters.stats returns its definition of validations.
 This is useful for auto-generating API documents.
 
 ```ruby
-WeakParameters::stats[:recipes][:create].validators[0].key       #=> :name
-WeakParameters::stats[:recipes][:create].validators[0].required? #=> true
-WeakParameters::stats[:recipes][:create].validators[1].key       #=> :type
-WeakParameters::stats[:recipes][:create].validators[1].required? #=> false
+WeakParameters.stats[:recipes][:create].validators[0].key       #=> :name
+WeakParameters.stats[:recipes][:create].validators[0].required? #=> true
+WeakParameters.stats[:recipes][:create].validators[1].key       #=> :type
+WeakParameters.stats[:recipes][:create].validators[1].required? #=> false
 ```
