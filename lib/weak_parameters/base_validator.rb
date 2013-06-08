@@ -17,7 +17,7 @@ module WeakParameters
     end
 
     def type
-      :string
+      self.class.name.split("::").last.sub(/Validator$/, "").underscore.to_sym
     end
 
     private

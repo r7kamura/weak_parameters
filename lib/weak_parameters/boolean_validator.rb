@@ -1,9 +1,5 @@
 module WeakParameters
   class BooleanValidator < WeakParameters::BaseValidator
-    def type
-      :boolean
-    end
-
     private
 
     def valid_type?
