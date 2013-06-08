@@ -24,5 +24,9 @@ module WeakParameters
     def integer(key, options = {})
       validators << WeakParameters::IntegerValidator.new(params, key, options)
     end
+
+    def boolean(key, options = {})
+      validators << WeakParameters::BooleanValidator.new(params, key, options)
+    end
   end
 end

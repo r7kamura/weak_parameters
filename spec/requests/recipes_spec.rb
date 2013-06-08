@@ -1,14 +1,11 @@
 require "spec_helper"
 
 describe "Recipes" do
-  let(:env) do
-    { "HTTP_ACCEPT" => "application/json" }
-  end
-
   let(:params) do
     {
       name: "name",
       type: 1,
+      flag: true
     }
   end
 
@@ -19,18 +16,29 @@ describe "Recipes" do
       end
 
       it "returns 400" do
-        post "/recipes", params, env
+        post "/recipes", params
         response.status.should == 400
       end
     end
 
-    context "with other typed param" do
+    context "with wrong integer param" do
       before do
         params[:type] = "x"
       end
 
       it "returns 400" do
-        post "/recipes", params, env
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with wrong boolean param" do
+      before do
+        params[:flag] = "x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
         response.status.should == 400
       end
     end
@@ -41,14 +49,14 @@ describe "Recipes" do
       end
 
       it "creates a new recipe" do
-        post "/recipes", params, env
+        post "/recipes", params
         response.status.should == 201
       end
     end
 
     context "with valid condition", :autodoc do
       it "creates a new recipe" do
-        post "/recipes", params, env
+        post "/recipes", params
         response.status.should == 201
       end
     end

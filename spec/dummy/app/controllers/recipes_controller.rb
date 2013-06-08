@@ -2,13 +2,10 @@ class RecipesController < ApplicationController
   validates :create do
     string :name, required: true
     integer :type
-  end
-
-  def show
-    respond_with Recipe.find(params[:id])
+    boolean :flag
   end
 
   def create
-    respond_with Recipe.create(params.slice(:name, :type))
+    head 201
   end
 end
