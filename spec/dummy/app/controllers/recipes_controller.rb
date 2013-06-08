@@ -3,6 +3,8 @@ class RecipesController < ApplicationController
     string :name, required: true
     integer :type
     boolean :flag
+    hash :config
+    array :tags
   end
 
   def create

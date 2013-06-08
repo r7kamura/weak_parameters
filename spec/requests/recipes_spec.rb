@@ -5,7 +5,9 @@ describe "Recipes" do
     {
       name: "name",
       type: 1,
-      flag: true
+      flag: true,
+      config: {},
+      tags: [],
     }
   end
 
@@ -35,6 +37,28 @@ describe "Recipes" do
     context "with wrong boolean param" do
       before do
         params[:flag] = "x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with wrong array param" do
+      before do
+        params[:tags] = "x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with wrong hash param" do
+      before do
+        params[:config] = "x"
       end
 
       it "returns 400" do

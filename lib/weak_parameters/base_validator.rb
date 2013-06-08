@@ -9,7 +9,7 @@ module WeakParameters
     end
 
     def validate
-      raise_required_error if required? && nil?
+      raise_error if required? && nil? || exist? && invalid_type?
     end
 
     def required?
@@ -26,12 +26,28 @@ module WeakParameters
       value.nil?
     end
 
+    def exist?
+      !nil?
+    end
+
     def value
       params[key]
     end
 
-    def raise_required_error
-      raise WeakParameters::ValidationError, "params[#{key.inspect}] is required"
+    def raise_error
+      raise WeakParameters::ValidationError, error_message
+    end
+
+    def error_message
+      "params[#{key.inspect}] is required"
+    end
+
+    def valid_type?
+      true
+    end
+
+    def invalid_type?
+      !valid_type?
     end
   end
 end

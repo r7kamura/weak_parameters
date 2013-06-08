@@ -15,6 +15,10 @@ module WeakParameters
       @validators ||= []
     end
 
+    def type
+      self.class.name.split("::").last.sub(/Validator$/, "").underscore.to_sym
+    end
+
     private
 
     def string(key, options = {})
@@ -27,6 +31,14 @@ module WeakParameters
 
     def boolean(key, options = {})
       validators << WeakParameters::BooleanValidator.new(params, key, options)
+    end
+
+    def hash(key, options = {})
+      validators << WeakParameters::HashValidator.new(params, key, options)
+    end
+
+    def array(key, options = {})
+      validators << WeakParameters::ArrayValidator.new(params, key, options)
     end
   end
 end
