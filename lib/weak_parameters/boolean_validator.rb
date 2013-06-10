@@ -3,7 +3,7 @@ module WeakParameters
     private
 
     def valid_type?
-      %w[0 1 false true].include?(value)
+      %w[0 1 false true].include?(value.to_s)
     end
 
     def error_message
