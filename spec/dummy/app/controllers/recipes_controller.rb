@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   validates :create do
-    string :name, required: true
-    integer :type
+    string :name, required: true, except: %w[invalid wrong]
+    integer :type, only: "1".."3"
     boolean :flag
     hash :config
     array :tags

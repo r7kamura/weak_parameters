@@ -9,7 +9,7 @@ module WeakParameters
     end
 
     def validate
-      raise_error if required? && nil? || exist? && invalid_type?
+      raise_error unless valid?
     end
 
     def required?
@@ -22,12 +22,36 @@ module WeakParameters
 
     private
 
+    def valid?
+      case
+      when required? && nil?
+        false
+      when exist? && invalid_type?
+        false
+      when exist? && exceptional?
+        false
+      else
+        true
+      end
+    end
+
     def nil?
       value.nil?
     end
 
     def exist?
       !nil?
+    end
+
+    def exceptional?
+      case
+      when options[:only].try(:exclude?, value)
+        true
+      when options[:except].try(:include?, value)
+        true
+      else
+        false
+      end
     end
 
     def value

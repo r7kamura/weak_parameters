@@ -78,6 +78,28 @@ describe "Recipes" do
       end
     end
 
+    context "with invalid param to :only condition" do
+      before do
+        params[:type] = 0
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with invalid param to :except condition" do
+      before do
+        params[:name] = "invalid"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
     context "with valid condition", :autodoc do
       it "creates a new recipe" do
         post "/recipes", params

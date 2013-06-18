@@ -11,8 +11,8 @@ gem "weak_parameters"
 # WeakParameters provides `validates` class method to define validations.
 class RecipesController < ApplicationController
   validates :create do
-    string :name, required: true
-    integer :type
+    string :name, required: true, except: ["charlie", "dave"]
+    integer :type, only: "1".."3"
   end
 
   def create
