@@ -12,7 +12,7 @@ gem "weak_parameters"
 class RecipesController < ApplicationController
   validates :create do
     string :name, required: true, except: ["charlie", "dave"]
-    integer :type, only: "1".."3"
+    integer :type, only: 1..3
   end
 
   def create

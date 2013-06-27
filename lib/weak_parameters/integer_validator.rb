@@ -7,5 +7,11 @@ module WeakParameters
     def error_message
       "params[#{key.inspect}] must be an Integer"
     end
+
+    private
+
+    def value
+      super.presence.try(:to_i)
+    end
   end
 end
