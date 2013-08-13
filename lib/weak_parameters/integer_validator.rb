@@ -1,7 +1,7 @@
 module WeakParameters
   class IntegerValidator < WeakParameters::BaseValidator
     def valid_type?
-      /\A-?\d+\z/ === value.to_s
+      /\A-?\d+\z/ === params[key].to_s
     end
 
     def error_message

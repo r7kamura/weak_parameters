@@ -4,6 +4,7 @@ describe "Recipes" do
   let(:params) do
     {
       name: "name",
+      number: 0,
       type: 1,
       flag: true,
       config: {},
@@ -26,6 +27,17 @@ describe "Recipes" do
     context "with wrong integer param" do
       before do
         params[:type] = "x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with exceptional interger param" do
+      before do
+        params[:number] = true
       end
 
       it "returns 400" do
@@ -80,7 +92,7 @@ describe "Recipes" do
 
     context "with invalid param to :only condition" do
       before do
-        params[:type] = 0
+        params[:type] = 4
       end
 
       it "returns 400" do
