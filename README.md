@@ -13,6 +13,9 @@ class RecipesController < ApplicationController
   validates :create do
     string :name, required: true, except: ["charlie", "dave"]
     integer :type, only: 1..3
+    string :quantity do |value|
+      value =~ /\A\d+(?:\.\d+)g\z/
+    end
   end
 
   def create

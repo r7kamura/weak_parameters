@@ -9,6 +9,7 @@ describe "Recipes" do
       flag: true,
       config: {},
       tags: [],
+      zip_code: "123-4567",
     }
   end
 
@@ -82,6 +83,17 @@ describe "Recipes" do
     context "with wrong float param" do
       before do
         params[:rate] = "-x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
+    context "with block failure" do
+      before do
+        params[:zip_code] = "123-456"
       end
 
       it "returns 400" do

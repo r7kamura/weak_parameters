@@ -7,6 +7,9 @@ class RecipesController < ApplicationController
     hash :config
     array :tags
     float :rate
+    string :zip_code do |value|
+      value =~ /\A\d{3}-\d{4}\z/
+    end
   end
 
   def create

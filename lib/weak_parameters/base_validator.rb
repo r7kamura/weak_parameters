@@ -1,11 +1,12 @@
 module WeakParameters
   class BaseValidator
-    attr_reader :params, :key, :options
+    attr_reader :params, :key, :options, :block
 
-    def initialize(params, key, options = {})
+    def initialize(params, key, options = {}, &block)
       @params = params
       @key = key
       @options = options
+      @block = block
     end
 
     def validate
@@ -29,6 +30,8 @@ module WeakParameters
       when exist? && invalid_type?
         false
       when exist? && exceptional?
+        false
+      when exist? && block && !block.call(value)
         false
       else
         true

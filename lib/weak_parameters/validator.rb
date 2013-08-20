@@ -17,28 +17,28 @@ module WeakParameters
 
     private
 
-    def string(key, options = {})
-      validators << WeakParameters::StringValidator.new(params, key, options)
+    def string(key, options = {}, &block)
+      validators << WeakParameters::StringValidator.new(params, key, options, &block)
     end
 
-    def integer(key, options = {})
-      validators << WeakParameters::IntegerValidator.new(params, key, options)
+    def integer(key, options = {}, &block)
+      validators << WeakParameters::IntegerValidator.new(params, key, options, &block)
     end
 
-    def boolean(key, options = {})
-      validators << WeakParameters::BooleanValidator.new(params, key, options)
+    def boolean(key, options = {}, &block)
+      validators << WeakParameters::BooleanValidator.new(params, key, options, &block)
     end
 
-    def hash(key, options = {})
-      validators << WeakParameters::HashValidator.new(params, key, options)
+    def hash(key, options = {}, &block)
+      validators << WeakParameters::HashValidator.new(params, key, options, &block)
     end
 
-    def array(key, options = {})
-      validators << WeakParameters::ArrayValidator.new(params, key, options)
+    def array(key, options = {}, &block)
+      validators << WeakParameters::ArrayValidator.new(params, key, options, &block)
     end
 
     def float(key, options = {})
-      validators << WeakParameters::FloatValidator.new(params, key, options)
+      validators << WeakParameters::FloatValidator.new(params, key, options, &block)
     end
   end
 end
