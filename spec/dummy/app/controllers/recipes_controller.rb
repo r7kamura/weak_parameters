@@ -6,6 +6,7 @@ class RecipesController < ApplicationController
     boolean :flag
     hash :config
     array :tags
+    float :rate
   end
 
   def create

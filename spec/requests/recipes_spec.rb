@@ -79,6 +79,17 @@ describe "Recipes" do
       end
     end
 
+    context "with wrong float param" do
+      before do
+        params[:rate] = "-x"
+      end
+
+      it "returns 400" do
+        post "/recipes", params
+        response.status.should == 400
+      end
+    end
+
     context "without non-required param" do
       before do
         params.delete(:type)

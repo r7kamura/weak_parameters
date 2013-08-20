@@ -36,5 +36,9 @@ module WeakParameters
     def array(key, options = {})
       validators << WeakParameters::ArrayValidator.new(params, key, options)
     end
+
+    def float(key, options = {})
+      validators << WeakParameters::FloatValidator.new(params, key, options)
+    end
   end
 end

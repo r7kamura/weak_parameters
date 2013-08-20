@@ -36,6 +36,7 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 
 ### Available validators
 * array
+* float
 * hash
 * integer
 * string
