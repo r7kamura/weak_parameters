@@ -7,7 +7,7 @@ module WeakParameters
     end
 
     def error_message
-      "params[#{key.inspect}] must be an Hash"
+      "params[#{key.inspect}] must be a valid Hash"
     end
   end
 end

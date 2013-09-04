@@ -7,7 +7,7 @@ module WeakParameters
     end
 
     def error_message
-      "params[#{key.inspect}] must be an Array"
+      "params[#{key.inspect}] must be a valid Array"
     end
   end
 end

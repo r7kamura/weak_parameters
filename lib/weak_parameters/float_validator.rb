@@ -5,7 +5,7 @@ module WeakParameters
     end
 
     def error_message
-      "params[#{key.inspect}] must be a Float"
+      "params[#{key.inspect}] must be a valid Float"
     end
 
     private

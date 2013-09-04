@@ -7,7 +7,7 @@ module WeakParameters
     end
 
     def error_message
-      "params[#{key.inspect}] must be 0, 1, false or true"
+      "params[#{key.inspect}] must be a valid Boolean"
     end
   end
 end

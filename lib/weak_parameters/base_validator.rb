@@ -66,7 +66,7 @@ module WeakParameters
     end
 
     def error_message
-      "params[#{key.inspect}] is required"
+      "params[#{key.inspect}] must be a valid value"
     end
 
     def valid_type?
