@@ -13,133 +13,100 @@ describe "Recipes" do
     }
   end
 
+  shared_examples_for "400" do
+    it "returns 400" do
+      post "/recipes", params
+      response.status.should == 400
+    end
+  end
+
+  shared_examples_for "201" do
+    it "creates a new recipe" do
+      post "/recipes", params
+      response.status.should == 201
+    end
+  end
+
   describe "POST /recipes" do
     context "without required param" do
       before do
         params.delete(:name)
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with wrong integer param" do
       before do
         params[:type] = "x"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with exceptional interger param" do
       before do
         params[:number] = true
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with wrong boolean param" do
       before do
         params[:flag] = "x"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with wrong array param" do
       before do
         params[:tags] = "x"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with wrong hash param" do
       before do
         params[:config] = "x"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with wrong float param" do
       before do
         params[:rate] = "-x"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with block failure" do
       before do
         params[:zip_code] = "123-456"
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
-    end
-
-    context "without non-required param" do
-      before do
-        params.delete(:type)
-      end
-
-      it "creates a new recipe" do
-        post "/recipes", params
-        response.status.should == 201
-      end
+      include_examples "400"
     end
 
     context "with invalid param to :only condition" do
       before do
         params[:type] = 4
       end
-
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
-      end
+      include_examples "400"
     end
 
     context "with invalid param to :except condition" do
       before do
         params[:name] = "invalid"
       end
+      include_examples "400"
+    end
 
-      it "returns 400" do
-        post "/recipes", params
-        response.status.should == 400
+    context "without non-required param" do
+      before do
+        params.delete(:type)
       end
+      include_examples "201"
     end
 
     context "with valid condition", :autodoc do
-      it "creates a new recipe" do
-        post "/recipes", params
-        response.status.should == 201
-      end
+      include_examples "201"
     end
   end
 end
