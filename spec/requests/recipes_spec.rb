@@ -35,6 +35,13 @@ describe "Recipes" do
       include_examples "400"
     end
 
+    context "with wrong string param" do
+      before do
+        params[:name] = ["x"]
+      end
+      include_examples "400"
+    end
+
     context "with wrong integer param" do
       before do
         params[:type] = "x"
