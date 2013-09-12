@@ -3,6 +3,7 @@ require "spec_helper"
 describe "Recipes" do
   let(:params) do
     {
+      object: [],
       name: "name",
       number: 0,
       type: 1,

@@ -17,6 +17,10 @@ module WeakParameters
 
     private
 
+    def any(key, options = {}, &block)
+      validators << WeakParameters::AnyValidator.new(params, key, options, &block)
+    end
+
     def string(key, options = {}, &block)
       validators << WeakParameters::StringValidator.new(params, key, options, &block)
     end

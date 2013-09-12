@@ -2,6 +2,7 @@ require "action_controller"
 require "active_support/hash_with_indifferent_access"
 
 require "weak_parameters/base_validator"
+require "weak_parameters/any_validator"
 require "weak_parameters/array_validator"
 require "weak_parameters/boolean_validator"
 require "weak_parameters/float_validator"
