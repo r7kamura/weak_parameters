@@ -1,4 +1,4 @@
-require "action_controller"
+#require "action_controller"
 require "active_support/hash_with_indifferent_access"
 
 require "weak_parameters/base_validator"
@@ -9,7 +9,7 @@ require "weak_parameters/float_validator"
 require "weak_parameters/hash_validator"
 require "weak_parameters/integer_validator"
 require "weak_parameters/string_validator"
-require "weak_parameters/controller"
+#require "weak_parameters/controller"
 require "weak_parameters/validation_error"
 require "weak_parameters/validator"
 require "weak_parameters/version"
@@ -51,4 +51,4 @@ module WeakParameters
   end
 end
 
-ActionController::Base.extend WeakParameters::Controller
+#ActionController::Base.extend WeakParameters::Controller
