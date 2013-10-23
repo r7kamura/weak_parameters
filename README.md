@@ -46,6 +46,12 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * string
 * boolean (= 0, 1, false, true)
 
+### Avilable options
+* required
+* only
+* except
+* handler
+
 ## Tips
 WeakParameters.stats returns its validation metadata, and this is useful for auto-generating API documents.
 With [autodoc](https://github.com/r7kamura/autodoc), you can auto-generate API documents with params information.
