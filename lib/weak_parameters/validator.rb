@@ -41,7 +41,7 @@ module WeakParameters
       validators << WeakParameters::ArrayValidator.new(params, key, options, &block)
     end
 
-    def float(key, options = {})
+    def float(key, options = {}, &block)
       validators << WeakParameters::FloatValidator.new(params, key, options, &block)
     end
   end
