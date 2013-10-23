@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
     hash :config
     array :tags
     float :rate
+    integer :custom, only: 0..1, handler: :render_error
     string :zip_code do |value|
       value =~ /\A\d{3}-\d{4}\z/
     end
@@ -15,5 +16,11 @@ class RecipesController < ApplicationController
 
   def create
     head 201
+  end
+
+  private
+
+  def render_error
+    head 403
   end
 end

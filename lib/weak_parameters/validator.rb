@@ -1,9 +1,9 @@
 module WeakParameters
   class Validator
-    attr_reader :block, :params
+    attr_reader :block, :controller
 
-    def initialize(params, &block)
-      @params = params
+    def initialize(controller, &block)
+      @controller = controller
       instance_eval(&block)
     end
 
@@ -18,31 +18,31 @@ module WeakParameters
     private
 
     def any(key, options = {}, &block)
-      validators << WeakParameters::AnyValidator.new(params, key, options, &block)
+      validators << WeakParameters::AnyValidator.new(controller, key, options, &block)
     end
 
     def string(key, options = {}, &block)
-      validators << WeakParameters::StringValidator.new(params, key, options, &block)
+      validators << WeakParameters::StringValidator.new(controller, key, options, &block)
     end
 
     def integer(key, options = {}, &block)
-      validators << WeakParameters::IntegerValidator.new(params, key, options, &block)
+      validators << WeakParameters::IntegerValidator.new(controller, key, options, &block)
     end
 
     def boolean(key, options = {}, &block)
-      validators << WeakParameters::BooleanValidator.new(params, key, options, &block)
+      validators << WeakParameters::BooleanValidator.new(controller, key, options, &block)
     end
 
     def hash(key, options = {}, &block)
-      validators << WeakParameters::HashValidator.new(params, key, options, &block)
+      validators << WeakParameters::HashValidator.new(controller, key, options, &block)
     end
 
     def array(key, options = {}, &block)
-      validators << WeakParameters::ArrayValidator.new(params, key, options, &block)
+      validators << WeakParameters::ArrayValidator.new(controller, key, options, &block)
     end
 
     def float(key, options = {}, &block)
-      validators << WeakParameters::FloatValidator.new(params, key, options, &block)
+      validators << WeakParameters::FloatValidator.new(controller, key, options, &block)
     end
   end
 end

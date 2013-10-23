@@ -1,16 +1,16 @@
 module WeakParameters
   class BaseValidator
-    attr_reader :params, :key, :options, :block
+    attr_reader :controller, :key, :options, :block
 
-    def initialize(params, key, options = {}, &block)
-      @params = params
+    def initialize(controller, key, options = {}, &block)
+      @controller = controller
       @key = key
       @options = options
       @block = block
     end
 
     def validate
-      raise_error unless valid?
+      handle_failure unless valid?
     end
 
     def required?
@@ -57,8 +57,20 @@ module WeakParameters
       end
     end
 
+    def params
+      controller.params
+    end
+
     def value
       params[key]
+    end
+
+    def handle_failure
+      if has_handler?
+        controller.send(options[:handler])
+      else
+        raise_error
+      end
     end
 
     def raise_error
@@ -75,6 +87,10 @@ module WeakParameters
 
     def invalid_type?
       !valid_type?
+    end
+
+    def has_handler?
+      !!options[:handler]
     end
   end
 end
