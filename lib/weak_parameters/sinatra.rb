@@ -14,7 +14,7 @@ require "weak_parameters/middleware"
 #     use WeakParameters::Middleware
 #
 #     post 'recipes' do
-#       validates :create do
+#       validates(params) do
 #         string :name, required: true
 #         integer :type
 #       end

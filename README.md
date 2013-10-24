@@ -45,7 +45,7 @@ class App < Sinatra::Base
   use WeakParameters::Middleware
 
   post 'recipes' do
-    validates :create do
+    validates(params) do
       string :name, required: true
       integer :type
     end
