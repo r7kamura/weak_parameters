@@ -11,6 +11,7 @@ describe "Recipes" do
       config: {},
       tags: [],
       zip_code: "123-4567",
+      custom: 0,
     }
   end
 
@@ -115,6 +116,16 @@ describe "Recipes" do
 
     context "with valid condition", :autodoc do
       include_examples "201"
+    end
+
+    context "with custom handler option" do
+      before do
+        params[:custom] = "invalid"
+      end
+      it "delegates to specified method" do
+        post "/recipes", params
+        response.status.should == 403
+      end
     end
   end
 end
