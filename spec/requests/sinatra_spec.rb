@@ -118,5 +118,15 @@ describe "Recipes" do
     context "with valid condition" do
       include_examples "201"
     end
+    
+    context "with custom handler option" do
+      before do
+        params[:custom] = "invalid"
+      end
+      it "delegates to specified method" do
+        post "/recipes", params
+        last_response.status.should == 403
+      end
+    end
   end
 end

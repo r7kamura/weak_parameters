@@ -22,6 +22,7 @@ class App < Sinatra::Base
       hash :config
       array :tags
       float :rate
+      integer :custom, only: 0..1, handler: :render_error
       string :zip_code do |value|
         value =~ /\A\d{3}-\d{4}\z/
       end
@@ -32,6 +33,10 @@ class App < Sinatra::Base
   
   def validation_error exception
     [400, { "Content-Type" => "text/xml; charset=utf-8" }, [ "<error>#{exception.message}</error>"]]
+  end
+
+  def render_error
+    halt 403, "error"
   end
 
 end
