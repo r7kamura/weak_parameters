@@ -14,7 +14,7 @@ require "weak_parameters/middleware"
 #     use WeakParameters::Middleware
 #
 #     post 'recipes' do
-#       validates(params) do
+#       validates do
 #         string :name, required: true
 #         integer :type
 #       end
@@ -35,8 +35,8 @@ require "weak_parameters/middleware"
 
 module WeakParameters
   module Sinatra
-    def validates(params, &block)
-      validator = WeakParameters::Validator.new(params, &block)
+    def validates(&block)
+      validator = WeakParameters::Validator.new(self, &block)
       req = Rack::Request.new(request.env)
       WeakParameters.stats[req.request_method][req.env["PATH_INFO"]] = validator
       WeakParameters.stats[req.request_method][req.env["PATH_INFO"]].validate

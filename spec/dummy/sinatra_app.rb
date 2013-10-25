@@ -13,7 +13,7 @@ class App < Sinatra::Base
   use WeakParameters::Middleware
 
   post '/recipes' do
-    validates(params) do
+    validates do
       any :object
       string :name, required: true, except: %w[invalid wrong]
       integer :type, only: 0..3
