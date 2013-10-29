@@ -21,7 +21,7 @@ require "weak_parameters/middleware"
 #
 #       Recipe.create(params).to_xml
 #     end
-#     def validation_error exception
+#     def validation_error exception, env
 #       [400, { "Content-Type" => "text/html; charset=utf-8" }, [ "exception.message"]]
 #     end
 #   end
