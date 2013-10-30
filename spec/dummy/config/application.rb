@@ -6,7 +6,7 @@ if defined?(Bundler)
   Bundler.require(:default, Rails.env)
 end
 
-require "weak_parameters"
+require "weak_parameters/rails"
 
 module Dummy
   class Application < Rails::Application

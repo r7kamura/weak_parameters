@@ -8,6 +8,7 @@ gem "weak_parameters"
 
 ## Usage
 ```ruby
+# Rails Case
 # WeakParameters provides `validates` class method to define validations.
 class RecipesController < ApplicationController
   validates :create do
@@ -35,6 +36,27 @@ irb(main):004:0> app.post "/recipes", type: 1
 => 400
 irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 => 400
+```
+
+```ruby
+# Sinatra Case
+class App < Sinatra::Base
+  include WeakParameters::Sinatra
+  use WeakParameters::Middleware
+
+  post 'recipes' do
+    validates do
+      string :name, required: true
+      integer :type
+    end
+
+    Recipe.create(params).to_xml
+  end
+
+  def validation_error exception, env
+    [400, { "Content-Type" => "text/html; charset=utf-8" }, [ "exception.message"]]
+  end
+end
 ```
 
 ### Available validators
