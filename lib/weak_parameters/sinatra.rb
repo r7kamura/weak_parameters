@@ -1,4 +1,4 @@
-require "weak_parameters/base"
+require "weak_parameters"
 require "weak_parameters/middleware"
 
 # Provides `validates` DSL to controllers to validate params.
