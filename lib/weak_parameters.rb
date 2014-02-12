@@ -49,6 +49,12 @@ module WeakParameters
       hash[key] = ActiveSupport::HashWithIndifferentAccess.new
     end
   end
-end
 
-ActionController::Base.extend WeakParameters::Controller
+  class Railties < ::Rails::Railtie
+    initializer 'weak_parameters' do
+      ActiveSupport.on_load :action_controller do
+        ActionController::Base.extend WeakParameters::Controller
+      end
+    end
+  end
+end
