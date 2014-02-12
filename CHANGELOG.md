@@ -1,3 +1,6 @@
+## 0.1.3
+* Don't directly touch AC::Base, but do it via AS.on_load
+
 ## 0.1.2
 * Add `:handler` option to customize failure behavior
 * Fix bug around `float` validator with block
