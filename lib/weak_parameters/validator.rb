@@ -17,6 +17,10 @@ module WeakParameters
 
     private
 
+    def params
+      controller.params
+    end
+
     def any(key, options = {}, &block)
       validators << WeakParameters::AnyValidator.new(controller, key, options, &block)
     end
