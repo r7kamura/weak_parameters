@@ -1,3 +1,6 @@
+## 0.1.4
+* Tiny improvement about Validator#params
+
 ## 0.1.3
 * Don't directly touch AC::Base, but do it via AS.on_load
 
