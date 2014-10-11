@@ -1,3 +1,6 @@
+## 0.1.5
+* Support `file` validator (#6)
+
 ## 0.1.4
 * Tiny improvement about Validator#params
 
