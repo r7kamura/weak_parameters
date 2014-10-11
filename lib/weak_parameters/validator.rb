@@ -48,5 +48,9 @@ module WeakParameters
     def float(key, options = {}, &block)
       validators << WeakParameters::FloatValidator.new(controller, key, options, &block)
     end
+
+    def file(key, options = {}, &block)
+      validators << WeakParameters::FileValidator.new(controller, key, options, &block)
+    end
   end
 end
