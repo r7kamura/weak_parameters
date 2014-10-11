@@ -10,6 +10,7 @@ describe "Recipes" do
       flag: true,
       config: {},
       tags: [],
+      attachment: Rack::Test::UploadedFile.new(__FILE__),
       zip_code: "123-4567",
       custom: 0,
     }
@@ -82,6 +83,13 @@ describe "Recipes" do
     context "with wrong float param" do
       before do
         params[:rate] = "-x"
+      end
+      include_examples "400"
+    end
+
+    context "with wrong file param" do
+      before do
+        params[:attachment] = "x"
       end
       include_examples "400"
     end
