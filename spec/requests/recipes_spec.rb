@@ -13,6 +13,7 @@ describe "Recipes" do
       attachment: Rack::Test::UploadedFile.new(__FILE__),
       zip_code: "123-4567",
       custom: 0,
+      message: { body: "body" },
     }
   end
 
@@ -97,6 +98,13 @@ describe "Recipes" do
     context "with block failure" do
       before do
         params[:zip_code] = "123-456"
+      end
+      include_examples "400"
+    end
+
+    context "without nested required param" do
+      before do
+        params[:message].delete(:body)
       end
       include_examples "400"
     end

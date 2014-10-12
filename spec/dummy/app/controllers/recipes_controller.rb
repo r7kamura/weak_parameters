@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
     string :zip_code do |value|
       value =~ /\A\d{3}-\d{4}\z/
     end
+    string "message[body]", required: true
   end
 
   def create

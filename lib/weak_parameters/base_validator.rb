@@ -61,8 +61,12 @@ module WeakParameters
       controller.params
     end
 
+    NESTED_KEY_REGEXP = /\[?([^\[\]]+)\]?/
+
     def value
-      params[key]
+      @value ||= key.to_s.scan(NESTED_KEY_REGEXP).flatten.inject(params) do |param, key|
+        param[key] if param
+      end
     end
 
     def handle_failure
