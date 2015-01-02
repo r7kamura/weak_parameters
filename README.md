@@ -55,6 +55,7 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * integer
 * string
 * boolean (= 0, 1, false, true)
+* file
 
 ### Avilable options
 * required
