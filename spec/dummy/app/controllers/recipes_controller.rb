@@ -13,6 +13,18 @@ class RecipesController < ApplicationController
     string :zip_code do |value|
       value =~ /\A\d{3}-\d{4}\z/
     end
+    object :nested, required: true do
+      integer :number, only: [0, 1]
+    end
+
+    list :numbers, :integer, description: 'some numbers'
+
+    object :body do
+      list :items, :object, description: 'some items' do
+        string :name
+        integer :price
+      end
+    end
   end
 
   def create

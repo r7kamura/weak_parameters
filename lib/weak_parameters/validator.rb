@@ -17,6 +17,18 @@ module WeakParameters
 
     private
 
+    def with_validators(&block)
+      old_validators = @validators
+
+      begin
+        @validators = []
+        block.call
+        @validators
+      ensure
+        @validators = old_validators
+      end
+    end
+
     def params
       controller.params
     end
@@ -51,6 +63,16 @@ module WeakParameters
 
     def file(key, options = {}, &block)
       validators << WeakParameters::FileValidator.new(controller, key, options, &block)
+    end
+
+    def object(key, options = {}, &block)
+      children = with_validators { instance_eval(&block) }
+      validators << WeakParameters::ObjectValidator.new(controller, key, children, options)
+    end
+
+    def list(key, type, options = {}, &block)
+      children = with_validators { send type, nil, options, &block }
+      validators << WeakParameters::ListValidator.new(controller, key, children.first)
     end
   end
 end
