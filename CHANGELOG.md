@@ -1,3 +1,6 @@
+## 0.1.6
+* Support nested parameters (Thx @mzp)
+
 ## 0.1.5
 * Support `file` validator (#6)
 
