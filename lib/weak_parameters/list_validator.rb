@@ -16,6 +16,16 @@ module WeakParameters
       end
     end
 
+    def strong_params(*args)
+      super
+
+      return {} unless exist?
+      strong_values = value.map.with_index do |_, i|
+        validator.strong_params(*path, i)[i]
+      end.compact
+      strong_values.present? ? { key => strong_values } : {}
+    end
+
     def validators
       [ validator ]
     end

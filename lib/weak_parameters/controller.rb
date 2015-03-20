@@ -5,7 +5,11 @@ module WeakParameters
         validator = WeakParameters::Validator.new(self, &block)
         WeakParameters.stats[params[:controller]][params[:action]] = validator
         WeakParameters.stats[params[:controller]][params[:action]].validate
+        if Object.const_defined?(:ActionController) && ActionController.const_defined?(:StrongParameters)
+          @permitted_params = validator.strong_params.permit!
+        end
       end
+      define_method(:permitted_params) { @permitted_params }
     end
   end
 end

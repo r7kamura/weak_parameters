@@ -16,6 +16,16 @@ module WeakParameters
       end
     end
 
+    def strong_params(*args)
+      super
+
+      strong_values = validators.map do |validator|
+        validator.strong_params(*path)
+      end.inject(ActionController::Parameters.new, &:merge)
+      return {} if strong_values.blank?
+      { key => strong_values }
+    end
+
     private
 
     def valid?
