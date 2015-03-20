@@ -7,6 +7,7 @@ module WeakParameters
       @key = key
       @options = options
       @block = block
+      @path = []
     end
 
     def validate(*path)
