@@ -1,3 +1,6 @@
+## 0.2.1
+- Fix validtion bug on existence check
+
 ## 0.2.0
 - Add strong options on validator DSL (Thx @yoshiori)
 
