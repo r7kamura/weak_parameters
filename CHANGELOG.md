@@ -1,3 +1,6 @@
+## 0.2.0
+* Add strong options on validator DSL (Thx @yoshiori)
+
 ## 0.1.7
 * Fix bug on missing `@path` variable (Thx @taka0125)
 
