@@ -19,12 +19,21 @@ module WeakParameters
       !!options[:required]
     end
 
+    def strong?
+      !!options[:strong]
+    end
+
     def type
       self.class.name.split("::").last.sub(/Validator$/, "").underscore.to_sym
     end
 
     def key
       path[-1]
+    end
+
+    def strong_params(*path)
+      @path = path
+      exist? && strong? ? {key => value} : {}
     end
 
     private

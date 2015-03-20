@@ -15,6 +15,10 @@ module WeakParameters
       @validators ||= []
     end
 
+    def strong_params
+      validators.map(&:strong_params).inject(ActionController::Parameters.new, &:merge)
+    end
+
     private
 
     def with_validators(&block)
