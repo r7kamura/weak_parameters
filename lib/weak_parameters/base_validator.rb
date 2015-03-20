@@ -54,7 +54,7 @@ module WeakParameters
     end
 
     def nil?
-      value.nil?
+      params[key].nil?
     end
 
     def exist?
