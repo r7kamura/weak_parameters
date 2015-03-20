@@ -1,3 +1,6 @@
+## 0.1.7
+* Fix bug on missing `@path` variable (Thx @taka0125)
+
 ## 0.1.6
 * Support nested parameters (Thx @mzp)
 
