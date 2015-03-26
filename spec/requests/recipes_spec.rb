@@ -170,10 +170,19 @@ describe "Recipes", type: :request do
     end
 
     context "with complex params" do
-      before do
-        params[:body][:items] << { price: "xxx" }
+      describe 'invalid parameter' do
+        before do
+          params[:body][:items] << { price: "xxx" }
+        end
+        include_examples "400"
       end
-      include_examples "400"
+
+      describe 'missing parameter' do
+        before do
+          params.delete :body
+        end
+        include_examples "201"
+      end
     end
   end
 end
