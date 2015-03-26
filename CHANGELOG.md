@@ -1,3 +1,6 @@
+## 0.2.2
+- Fix nil validation bug on nested parameters (Thx @mzp)
+
 ## 0.2.1
 - Fix validtion bug on existence check
 
