@@ -59,7 +59,7 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * object
 * list
 
-### Avilable options
+### Available options
 * required
 * only
 * except
