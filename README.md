@@ -1,4 +1,4 @@
-# WeakParameters
+# WeakParameters [![Build Status](https://travis-ci.org/r7kamura/weak_parameters.svg?branch=master)](https://travis-ci.org/r7kamura/weak_parameters)
 Validates `params` in your controller.
 
 ## Installation
