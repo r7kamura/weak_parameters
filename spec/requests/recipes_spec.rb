@@ -29,14 +29,14 @@ describe "Recipes", type: :request do
   shared_examples_for "400" do
     it "returns 400" do
       post "/recipes", params
-      response.status.should == 400
+      expect(response.status).to eq(400)
     end
   end
 
   shared_examples_for "201" do
     it "creates a new recipe" do
       post "/recipes", params
-      response.status.should == 201
+      expect(response.status).to eq(201)
     end
   end
 
@@ -142,7 +142,7 @@ describe "Recipes", type: :request do
       end
       it "delegates to specified method" do
         post "/recipes", params
-        response.status.should == 403
+        expect(response.status).to eq(403)
       end
     end
 

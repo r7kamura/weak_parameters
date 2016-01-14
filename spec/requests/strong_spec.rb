@@ -49,52 +49,52 @@ describe "Strong", type: :request do
   describe "#permitted_params" do
     it "returns permitted_params" do
       post "/strongs", params
-      controller.permitted_params.should have_key "strong_object"
-      controller.permitted_params.should_not have_key "object"
+      expect(controller.permitted_params).to have_key "strong_object"
+      expect(controller.permitted_params).not_to have_key "object"
 
-      controller.permitted_params.should have_key "strong_name"
-      controller.permitted_params.should_not have_key "name"
+      expect(controller.permitted_params).to have_key "strong_name"
+      expect(controller.permitted_params).not_to have_key "name"
 
-      controller.permitted_params.should have_key "strong_number"
-      controller.permitted_params.should_not have_key "number"
+      expect(controller.permitted_params).to have_key "strong_number"
+      expect(controller.permitted_params).not_to have_key "number"
 
-      controller.permitted_params.should have_key "strong_type"
-      controller.permitted_params.should_not have_key "type"
+      expect(controller.permitted_params).to have_key "strong_type"
+      expect(controller.permitted_params).not_to have_key "type"
 
-      controller.permitted_params.should have_key "strong_flag"
-      controller.permitted_params.should_not have_key "flag"
+      expect(controller.permitted_params).to have_key "strong_flag"
+      expect(controller.permitted_params).not_to have_key "flag"
 
-      controller.permitted_params.should have_key "strong_config"
-      controller.permitted_params.should_not have_key "config"
+      expect(controller.permitted_params).to have_key "strong_config"
+      expect(controller.permitted_params).not_to have_key "config"
 
-      controller.permitted_params.should have_key "strong_tags"
-      controller.permitted_params.should_not have_key "tags"
+      expect(controller.permitted_params).to have_key "strong_tags"
+      expect(controller.permitted_params).not_to have_key "tags"
 
-      controller.permitted_params.should_not have_key "strong_rate"
-      controller.permitted_params.should_not have_key "rate"
+      expect(controller.permitted_params).not_to have_key "strong_rate"
+      expect(controller.permitted_params).not_to have_key "rate"
 
-      controller.permitted_params.should have_key "strong_attachment"
-      controller.permitted_params.should_not have_key "attachment"
+      expect(controller.permitted_params).to have_key "strong_attachment"
+      expect(controller.permitted_params).not_to have_key "attachment"
 
-      controller.permitted_params.should have_key "strong_zip_code"
-      controller.permitted_params.should_not have_key "zip_code"
+      expect(controller.permitted_params).to have_key "strong_zip_code"
+      expect(controller.permitted_params).not_to have_key "zip_code"
 
-      controller.permitted_params.should have_key "strong_custom"
-      controller.permitted_params.should_not have_key "custom"
+      expect(controller.permitted_params).to have_key "strong_custom"
+      expect(controller.permitted_params).not_to have_key "custom"
 
-      controller.permitted_params.should have_key "strong_nested"
-      controller.permitted_params.should_not have_key "nested"
+      expect(controller.permitted_params).to have_key "strong_nested"
+      expect(controller.permitted_params).not_to have_key "nested"
 
-      controller.permitted_params.should have_key "strong_numbers"
-      controller.permitted_params.should_not have_key "numbers"
+      expect(controller.permitted_params).to have_key "strong_numbers"
+      expect(controller.permitted_params).not_to have_key "numbers"
 
-      controller.permitted_params.should have_key "strong_body"
-      controller.permitted_params.should_not have_key "body"
+      expect(controller.permitted_params).to have_key "strong_body"
+      expect(controller.permitted_params).not_to have_key "body"
 
-      controller.permitted_params[:strong_body].should have_key "items"
+      expect(controller.permitted_params[:strong_body]).to have_key "items"
 
-      controller.permitted_params[:strong_body][:items].first.should have_key "strong_price"
-      controller.permitted_params[:strong_body][:items].first.should_not have_key "name"
+      expect(controller.permitted_params[:strong_body][:items].first).to have_key "strong_price"
+      expect(controller.permitted_params[:strong_body][:items].first).not_to have_key "name"
     end
   end
 end
