@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
     file :attachment
     integer :custom, only: 0..1, handler: :render_error
     string :zip_code do |value|
-      value =~ /\A\d{3}-\d{4}\z/
+      zip_pattern(value)
     end
     object :nested, required: true do
       integer :number, only: [0, 1]
@@ -35,5 +35,9 @@ class RecipesController < ApplicationController
 
   def render_error
     head 403
+  end
+
+  def zip_pattern(value)
+    value =~ /\A\d{3}-\d{4}\z/
   end
 end

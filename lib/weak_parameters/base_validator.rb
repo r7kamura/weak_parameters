@@ -46,7 +46,7 @@ module WeakParameters
         false
       when exist? && exceptional?
         false
-      when exist? && block && !block.call(value)
+      when exist? && block && !controller.instance_exec(value, &block)
         false
       else
         true
