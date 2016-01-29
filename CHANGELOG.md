@@ -1,3 +1,7 @@
+## 0.2.3
+- Change execution context of validator block
+- Fix a development dependencies problem
+
 ## 0.2.2
 - Fix nil validation bug on nested parameters (Thx @mzp)
 
