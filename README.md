@@ -21,15 +21,16 @@ end
 # WeakParameters provides `validates` class method to define validations.
 class RecipesController < ApplicationController
   validates :create do
-    string :name, required: true, except: ["charlie", "dave"]
-    integer :type, only: 1..3
+    string :name, required: true, except: ["charlie", "dave"], strong: true
+    integer :type, only: 1..3, strong: true
     string :quantity do |value|
       value =~ /\A\d+(?:\.\d+)g\z/
     end
   end
 
   def create
-    respond_with Recipe.create(params.slice(:name, :type))
+    # pass the only parameters with strong option. like strong parameters.
+    respond_with Recipe.create(permitted_params)
   end
 end
 ```
