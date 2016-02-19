@@ -1,3 +1,6 @@
+## 0.3.0
+- Remove Rails 3 support
+
 ## 0.2.3
 - Change execution context of validator block
 - Fix a development dependencies problem
