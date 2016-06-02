@@ -3,7 +3,12 @@ module WeakParameters
     private
 
     def valid_type?
-      value.is_a?(Hash)
+      type = if Object.const_defined?(:ActionController) && ActionController.const_defined?(:StrongParameters)
+               ActionController::Parameters
+             else
+               Hash
+             end
+      value.is_a?(type)
     end
 
     def error_message
