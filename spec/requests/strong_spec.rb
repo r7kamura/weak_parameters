@@ -48,7 +48,7 @@ describe "Strong", type: :request do
 
   describe "#permitted_params" do
     it "returns permitted_params" do
-      post "/strongs", params
+      post "/strongs", params: params
       expect(controller.permitted_params).to have_key "strong_object"
       expect(controller.permitted_params).not_to have_key "object"
 
