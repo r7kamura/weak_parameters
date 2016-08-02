@@ -1,3 +1,6 @@
+## 0.4.0
+- Support Rails 5
+
 ## 0.3.0
 - Remove Rails 3 support
 
