@@ -57,6 +57,7 @@ module WeakParameters
     initializer 'weak_parameters' do
       ActiveSupport.on_load :action_controller do
         ActionController::Base.extend WeakParameters::Controller
+        ActionController::API.extend WeakParameters::Controller if Object.const_defined?('ActionController::API')
       end
     end
   end
