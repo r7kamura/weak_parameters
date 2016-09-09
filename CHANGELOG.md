@@ -1,3 +1,6 @@
+## 0.4.1
+- Support rails-api
+
 ## 0.4.0
 - Support Rails 5
 
