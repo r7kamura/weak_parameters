@@ -42,10 +42,19 @@ describe "Recipes with rails-api", type: :request do
 
   describe "POST /api/recipes" do
     context "without required param" do
-      before do
-        params.delete(:name)
+      describe 'string parameter' do
+        before do
+          params.delete(:name)
+        end
+        include_examples "400"
       end
-      include_examples "400"
+
+      describe 'list parameter' do
+        before do
+          params.delete(:numbers)
+        end
+        include_examples "400"
+      end
     end
 
     context "with wrong string param" do

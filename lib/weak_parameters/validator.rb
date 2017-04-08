@@ -76,7 +76,7 @@ module WeakParameters
 
     def list(key, type, options = {}, &block)
       children = with_validators { send type, nil, options, &block }
-      validators << WeakParameters::ListValidator.new(controller, key, children.first)
+      validators << WeakParameters::ListValidator.new(controller, key, children.first, options)
     end
   end
 end

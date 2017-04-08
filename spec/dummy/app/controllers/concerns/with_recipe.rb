@@ -20,7 +20,7 @@ module WithRecipe
         integer :number, only: [0, 1]
       end
 
-      list :numbers, :integer, description: 'some numbers'
+      list :numbers, :integer, required: true, description: 'some numbers'
 
       object :body do
         list :items, :object, description: 'some items' do
