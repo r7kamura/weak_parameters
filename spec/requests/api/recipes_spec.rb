@@ -153,6 +153,10 @@ describe "Recipes with rails-api", type: :request do
       include_examples "400"
     end
 
+    context "with blank option" do
+      include_examples "201"
+    end
+
     context "with wrong repeated params" do
       describe 'scalar' do
         before do

@@ -16,6 +16,7 @@ describe "Recipes", type: :request do
       nested: {
         number: 0
       },
+      point: '',
       numbers: [1, 2, 3],
       body: {
         items: [
@@ -151,6 +152,10 @@ describe "Recipes", type: :request do
         params[:nested][:number] = true
       end
       include_examples "400"
+    end
+
+    context "with blank option" do
+      include_examples "201"
     end
 
     context "with wrong repeated params" do
