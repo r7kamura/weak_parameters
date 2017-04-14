@@ -1,3 +1,7 @@
+## 0.4.2
+
+- Fix options on list validator (Thx @laboone)
+
 ## 0.4.1
 
 - Support rails-api
