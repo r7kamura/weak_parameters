@@ -66,6 +66,7 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * except
 * handler
 * strong
+* allow_blank
 
 ## Tips
 WeakParameters.stats returns its validation metadata, and this is useful for auto-generating API documents.

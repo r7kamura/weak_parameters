@@ -19,6 +19,9 @@ module WithRecipe
       object :nested, required: true do
         integer :number, only: [0, 1]
       end
+      string :point, allow_blank: true do |_|
+        false
+      end
 
       list :numbers, :integer, required: true, description: 'some numbers'
 

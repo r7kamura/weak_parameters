@@ -23,6 +23,10 @@ module WeakParameters
       !!options[:strong]
     end
 
+    def allow_blank?
+      !!options[:allow_blank]
+    end
+
     def type
       self.class.name.split("::").last.sub(/Validator$/, "").underscore.to_sym
     end
@@ -39,6 +43,8 @@ module WeakParameters
     private
 
     def valid?
+      return true if allow_blank? && blank?
+
       case
       when required? && nil?
         false
@@ -55,6 +61,10 @@ module WeakParameters
 
     def nil?
       params.nil? || params[key].nil?
+    end
+
+    def blank?
+      params.blank? || params[key].blank?
     end
 
     def exist?
