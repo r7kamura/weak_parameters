@@ -41,6 +41,7 @@ module WeakParameters
     def valid?
       case
       when required? && nil?
+        @error_message = "params[#{key.inspect}] is required"
         false
       when exist? && invalid_type?
         false
@@ -64,8 +65,10 @@ module WeakParameters
     def exceptional?
       case
       when options[:only].try(:exclude?, value)
+        @error_message = "params[#{key.inspect}] is excepted"
         true
       when options[:except].try(:include?, value)
+        @error_message = "params[#{key.inspect}] is excepted"
         true
       else
         false
@@ -97,7 +100,7 @@ module WeakParameters
     end
 
     def raise_error
-      raise WeakParameters::ValidationError, error_message
+      raise WeakParameters::ValidationError, @error_message || error_message
     end
 
     def error_message
