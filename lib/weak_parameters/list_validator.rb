@@ -1,8 +1,8 @@
 module WeakParameters
   class ListValidator < WeakParameters::ArrayValidator
     attr_reader :validator
-    def initialize(controller, key, validator)
-      super controller, key, {}
+    def initialize(controller, key, validator, options)
+      super controller, key, options
       @validator = validator
     end
 
