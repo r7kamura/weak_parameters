@@ -26,7 +26,8 @@ class RecipesController < ApplicationController
     string :quantity do |value|
       value =~ /\A\d+(?:\.\d+)g\z/
     end
-    date :date, date_formats: ["%Y/%m/%d", "%Y.%m.%d"]
+    date :date, only: ["%Y/%m/%d", "%Y.%m.%d"]
+    time :time, only: "%Y/%m/%d %H:%M:%S"
   end
 
   def create
@@ -61,6 +62,7 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * object
 * list
 * date (= default %Y-%m-%d)
+* time (= default %Y-%m-%d %H:%M:%S)
 
 ### Available options
 * required

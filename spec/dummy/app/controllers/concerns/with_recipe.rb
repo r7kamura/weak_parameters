@@ -12,7 +12,9 @@ module WithRecipe
       array :tags
       float :rate
       date :date
-      date :custom_date, date_formats: %w[%Y/%m/%d]
+      date :custom_date, only: %w[%Y/%m/%d %Y.%m.%d]
+      time :time
+      time :custom_time, only: '%Y/%m/%d %H:%M:%S'
       file :attachment
       integer :custom, only: 0..1, handler: :render_error
       string :zip_code do |value|

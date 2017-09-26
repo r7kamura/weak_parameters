@@ -120,6 +120,20 @@ describe "Recipes", type: :request do
       include_examples "400"
     end
 
+    context "with wrong time param" do
+      before do
+        params[:time] = Time.current.strftime('%Y/%m/%d %H:%M')
+      end
+      include_examples "400"
+    end
+
+    context "with wrong custom_time param" do
+      before do
+        params[:custom_time] = Time.current.strftime('%Y-%m-%d %H:%M:%S')
+      end
+      include_examples "400"
+    end
+
     context "with wrong file param" do
       before do
         params[:attachment] = "x"
