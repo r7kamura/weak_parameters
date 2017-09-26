@@ -106,6 +106,20 @@ describe "Recipes with rails-api", type: :request do
       include_examples "400"
     end
 
+    context "with wrong date param" do
+      before do
+        params[:date] = Date.current.strftime('%Y/%m/%d')
+      end
+      include_examples "400"
+    end
+
+    context "with wrong custom_date param" do
+      before do
+        params[:custom_date] = Date.current.strftime('%Y-%m-%d')
+      end
+      include_examples "400"
+    end
+
     context "with wrong file param" do
       before do
         params[:attachment] = "x"

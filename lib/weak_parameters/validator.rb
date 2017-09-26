@@ -65,6 +65,10 @@ module WeakParameters
       validators << WeakParameters::FloatValidator.new(controller, key, options, &block)
     end
 
+    def date(key, options = {}, &block)
+      validators << WeakParameters::DateValidator.new(controller, key, options, &block)
+    end
+
     def file(key, options = {}, &block)
       validators << WeakParameters::FileValidator.new(controller, key, options, &block)
     end

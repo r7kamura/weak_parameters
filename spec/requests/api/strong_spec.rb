@@ -17,6 +17,8 @@ describe "Strong with rails-api", type: :request do
       strong_config: { a: 1, b: { c: 2 } },
       tags: [1],
       strong_tags: [1],
+      date: Date.current.strftime('%Y-%m-%d'),
+      strong_date: Date.current.strftime('%Y-%m-%d'),
       attachment: Rack::Test::UploadedFile.new(__FILE__),
       strong_attachment: Rack::Test::UploadedFile.new(__FILE__),
       zip_code: "123-4567",
@@ -72,6 +74,9 @@ describe "Strong with rails-api", type: :request do
 
       expect(controller.permitted_params).not_to have_key "strong_rate"
       expect(controller.permitted_params).not_to have_key "rate"
+
+      expect(controller.permitted_params).to have_key "strong_date"
+      expect(controller.permitted_params).not_to have_key "date"
 
       expect(controller.permitted_params).to have_key "strong_attachment"
       expect(controller.permitted_params).not_to have_key "attachment"

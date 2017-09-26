@@ -11,6 +11,8 @@ module WithRecipe
       hash :config
       array :tags
       float :rate
+      date :date
+      date :custom_date, date_formats: %w[%Y/%m/%d]
       file :attachment
       integer :custom, only: 0..1, handler: :render_error
       string :zip_code do |value|
