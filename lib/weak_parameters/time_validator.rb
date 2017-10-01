@@ -2,10 +2,13 @@ module WeakParameters
   class TimeValidator < WeakParameters::DateValidator
     private
 
-    DEFALUT_FORMATS = ['%Y-%m-%d %H:%M:%S']
+    def parser_class
+      ::Time
+    end
 
-    def invalid_format?(date_format)
-      false
+    # Time is always true! (no custom validation)
+    def strictly?(format = nil)
+      true
     end
 
     def error_message

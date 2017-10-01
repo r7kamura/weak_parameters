@@ -2,22 +2,35 @@ module WeakParameters
   class DateValidator < WeakParameters::BaseValidator
     private
 
-    DEFALUT_FORMATS = %w[%Y-%m-%d]
+    def parser_class
+      ::Date
+    end
 
     def valid_type?
-      date_formats.any? do |date_format|
-        break false if invalid_format?(date_format)
-        Date._strptime(value, date_format)
+      if options[:only]
+        Array(options[:only]).any? do |format|
+          begin
+            parser_class.strptime(value, format)
+            return false unless strictly?(format)
+            true
+          rescue ::ArgumentError
+            false
+          end
+        end
+      else
+        begin
+          parser_class.parse(value)
+          return false unless strictly?
+          true
+        rescue ::ArgumentError
+          false
+        end
       end
     end
 
-    def date_formats
-      return %w[%Y-%m-%d] if options[:only].blank?
-      options[:only].is_a?(Array) ? options[:only] : [options[:only]]
-    end
-
-    def invalid_format?(date_format)
-      date_format =~ /(%H|%M|%S)/
+    def strictly?(format = nil)
+      result = format ? ::Date._strptime(value, format) : ::Date._strptime(value)
+      result.present? && !result.key?(:leftover)
     end
 
     def error_message

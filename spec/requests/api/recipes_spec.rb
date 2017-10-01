@@ -108,7 +108,7 @@ describe "Recipes with rails-api", type: :request do
 
     context "with wrong date param" do
       before do
-        params[:date] = Date.current.strftime('%Y/%m/%d')
+        params[:date] = '2017-01-32'
       end
       include_examples "400"
     end
@@ -122,7 +122,7 @@ describe "Recipes with rails-api", type: :request do
 
     context "with wrong time param" do
       before do
-        params[:time] = Time.current.strftime('%Y/%m/%d %H:%M')
+        params[:time] = '2017-01-31 24:00:01'
       end
       include_examples "400"
     end
