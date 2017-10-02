@@ -30,7 +30,7 @@ module WeakParameters
 
     def strictly?(format = nil)
       result = format ? ::Date._strptime(value, format) : ::Date._strptime(value)
-      result.present? && !result.key?(:leftover)
+      result && !result.key?(:leftover)
     end
 
     def error_message
