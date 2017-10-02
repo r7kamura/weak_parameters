@@ -19,6 +19,10 @@ module WithStrong
       array :strong_tags, strong: true
       float :rate
       float :strong_rate, strong: true
+      date :date
+      date :strong_date, strong: true
+      time :time
+      time :strong_time, strong: true
       file :attachment
       file :strong_attachment, strong: true
       integer :custom, only: 0..1, handler: :render_error

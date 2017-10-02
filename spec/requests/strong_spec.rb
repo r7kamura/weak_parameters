@@ -17,6 +17,10 @@ describe "Strong", type: :request do
       strong_config: { a: 1, b: { c: 2 } },
       tags: [1],
       strong_tags: [1],
+      date: Date.current.strftime('%Y-%m-%d'),
+      strong_date: Date.current.strftime('%Y-%m-%d'),
+      time: Time.current.strftime('%Y-%m-%d %H:%M:%S'),
+      strong_time: Time.current.strftime('%Y-%m-%d %H:%M:%S'),
       attachment: Rack::Test::UploadedFile.new(__FILE__),
       strong_attachment: Rack::Test::UploadedFile.new(__FILE__),
       zip_code: "123-4567",
@@ -72,6 +76,12 @@ describe "Strong", type: :request do
 
       expect(controller.permitted_params).not_to have_key "strong_rate"
       expect(controller.permitted_params).not_to have_key "rate"
+
+      expect(controller.permitted_params).to have_key "strong_date"
+      expect(controller.permitted_params).not_to have_key "date"
+
+      expect(controller.permitted_params).to have_key "strong_time"
+      expect(controller.permitted_params).not_to have_key "time"
 
       expect(controller.permitted_params).to have_key "strong_attachment"
       expect(controller.permitted_params).not_to have_key "attachment"
