@@ -1,3 +1,7 @@
+## 0.4.3
+
+- Support date and time validator (Thx @shimomuh)
+
 ## 0.4.2
 
 - Fix options on list validator (Thx @laboone)
