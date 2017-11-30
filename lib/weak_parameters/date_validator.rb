@@ -7,8 +7,8 @@ module WeakParameters
     end
 
     def valid_type?
-      if options[:only]
-        Array(options[:only]).any? do |format|
+      if options[:format]
+        Array(options[:format]).any? do |format|
           begin
             parser_class.strptime(value, format)
             return false unless strictly?(format)
