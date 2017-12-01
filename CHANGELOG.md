@@ -1,3 +1,7 @@
+## 0.5.0
+
+- Change options name from `:only` to `:format` (Thx @ganmacs)
+
 ## 0.4.3
 
 - Support date and time validator (Thx @shimomuh)
