@@ -120,11 +120,25 @@ describe "Recipes", type: :request do
       include_examples "400"
     end
 
+    context "with valid custom_date param" do
+      before do
+        params[:custom_date] = Date.current.strftime('%Y/%m/%d')
+      end
+      include_examples "201"
+    end
+
     context "with wrong time param" do
       before do
         params[:time] = '2017-01-31 24:00:01'
       end
       include_examples "400"
+    end
+
+    context "with valid time param" do
+      before do
+        params[:custom_time] = Time.current.strftime('%Y/%m/%d %H:%M:%S')
+      end
+      include_examples "201"
     end
 
     context "with wrong custom_time param" do
