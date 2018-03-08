@@ -71,7 +71,7 @@ describe "Recipes", type: :request do
       include_examples "400"
     end
 
-    context "with exceptional interger param" do
+    context "with exceptional integer param" do
       before do
         params[:number] = [1]
       end
