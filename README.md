@@ -72,6 +72,9 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * strong
 * format (only for date and time)
 
+### Available block options
+* block_strong (set parent option value to children validator options)
+
 ## Tips
 WeakParameters.stats returns its validation metadata, and this is useful for auto-generating API documents.
 With [autodoc](https://github.com/r7kamura/autodoc), you can auto-generate API documents with params information.

@@ -17,6 +17,8 @@ describe "Strong with rails-api", type: :request do
       strong_config: { a: 1, b: { c: 2 } },
       tags: [1],
       strong_tags: [1],
+      rate: 0.01,
+      strong_rate: 0.01,
       date: Date.current.strftime('%Y-%m-%d'),
       strong_date: Date.current.strftime('%Y-%m-%d'),
       time: Time.current.strftime('%Y-%m-%d %H:%M:%S'),
@@ -74,7 +76,7 @@ describe "Strong with rails-api", type: :request do
       expect(controller.permitted_params).to have_key "strong_tags"
       expect(controller.permitted_params).not_to have_key "tags"
 
-      expect(controller.permitted_params).not_to have_key "strong_rate"
+      expect(controller.permitted_params).to have_key "strong_rate"
       expect(controller.permitted_params).not_to have_key "rate"
 
       expect(controller.permitted_params).to have_key "strong_date"
@@ -105,6 +107,30 @@ describe "Strong with rails-api", type: :request do
 
       expect(controller.permitted_params[:strong_body][:items].first).to have_key "strong_price"
       expect(controller.permitted_params[:strong_body][:items].first).not_to have_key "name"
+    end
+  end
+
+  describe "per validation block option" do
+    it "returns permitted_params" do
+      post "/api/strongs/blocks", params: params
+      expect(controller.permitted_params).to have_key "strong_object"
+      expect(controller.permitted_params).to have_key "strong_name"
+      expect(controller.permitted_params).to have_key "strong_number"
+      expect(controller.permitted_params).to have_key "strong_type"
+      expect(controller.permitted_params).to have_key "strong_flag"
+      expect(controller.permitted_params).to have_key "strong_config"
+      expect(controller.permitted_params).to have_key "strong_tags"
+      expect(controller.permitted_params).to have_key "strong_rate"
+      expect(controller.permitted_params).to have_key "strong_date"
+      expect(controller.permitted_params).to have_key "strong_time"
+      expect(controller.permitted_params).to have_key "strong_attachment"
+      expect(controller.permitted_params).to have_key "strong_zip_code"
+      expect(controller.permitted_params).to have_key "strong_custom"
+      expect(controller.permitted_params).to have_key "strong_nested"
+      expect(controller.permitted_params).to have_key "strong_numbers"
+      expect(controller.permitted_params).to have_key "strong_body"
+      expect(controller.permitted_params[:strong_body]).to have_key "items"
+      expect(controller.permitted_params[:strong_body][:items].first).to have_key "strong_price"
     end
   end
 end
