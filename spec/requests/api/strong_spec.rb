@@ -17,6 +17,8 @@ describe "Strong with rails-api", type: :request do
       strong_config: { a: 1, b: { c: 2 } },
       tags: [1],
       strong_tags: [1],
+      rate: 0.01,
+      strong_rate: 0.01,
       date: Date.current.strftime('%Y-%m-%d'),
       strong_date: Date.current.strftime('%Y-%m-%d'),
       time: Time.current.strftime('%Y-%m-%d %H:%M:%S'),
@@ -74,7 +76,7 @@ describe "Strong with rails-api", type: :request do
       expect(controller.permitted_params).to have_key "strong_tags"
       expect(controller.permitted_params).not_to have_key "tags"
 
-      expect(controller.permitted_params).not_to have_key "strong_rate"
+      expect(controller.permitted_params).to have_key "strong_rate"
       expect(controller.permitted_params).not_to have_key "rate"
 
       expect(controller.permitted_params).to have_key "strong_date"
