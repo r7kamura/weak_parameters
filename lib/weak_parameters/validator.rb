@@ -23,10 +23,8 @@ module WeakParameters
     private
 
     def converted_options
-      @converted_options ||= {}.tap do |options|
-        if @block_options[:block_strong]
-          options[:strong] = @block_options[:block_strong]
-        end
+      @converted_options ||= {}.tap do |stash|
+        stash.merge!(@block_options[:block_option]) if @block_options[:block_option]
       end
     end
 

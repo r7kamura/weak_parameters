@@ -5,6 +5,6 @@ Dummy::Application.routes.draw do
   scope :api do
     resources :recipes, only: :create
     resources :strongs, only: :create
-    post '/strongs/blocks', to: 'api/strongs#create_block_strong'
+    post '/strongs/per_validation_block_option', to: 'api/strongs#create_per_validation_block_option'
   end
 end

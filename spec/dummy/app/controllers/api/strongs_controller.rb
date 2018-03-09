@@ -2,7 +2,7 @@ module Api
   class StrongsController < APIController
     include WithStrong
 
-    validates :create_block_strong, block_strong: true do
+    validates :create_per_validation_block_option, block_option: { strong: true } do
       any :strong_object
       string :strong_name, required: true, except: %w[invalid wrong]
       integer :strong_type, only: 0..3
@@ -30,7 +30,7 @@ module Api
       end
     end
 
-    def create_block_strong
+    def create_per_validation_block_option
       head 201
     end
   end

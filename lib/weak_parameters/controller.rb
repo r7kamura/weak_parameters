@@ -1,8 +1,8 @@
 module WeakParameters
   module Controller
-    def validates(action_name, options = {}, &block)
+    def validates(action_name, block_options = {}, &block)
       before_action only: action_name do
-        validator = WeakParameters::Validator.new(self, options, &block)
+        validator = WeakParameters::Validator.new(self, block_options, &block)
         WeakParameters.stats[params[:controller]][params[:action]] = validator
         WeakParameters.stats[params[:controller]][params[:action]].validate
         if Object.const_defined?(:ActionController) && ActionController.const_defined?(:StrongParameters)

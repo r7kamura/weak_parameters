@@ -110,9 +110,9 @@ describe "Strong with rails-api", type: :request do
     end
   end
 
-  describe "per validation block option" do
+  describe "#permitted_params with per validation block option" do
     it "returns permitted_params" do
-      post "/api/strongs/blocks", params: params
+      post "/api/strongs/per_validation_block_option", params: params
       expect(controller.permitted_params).to have_key "strong_object"
       expect(controller.permitted_params).to have_key "strong_name"
       expect(controller.permitted_params).to have_key "strong_number"

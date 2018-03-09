@@ -73,7 +73,8 @@ irb(main):005:0> app.post "/recipes", name: "alice", type: "bob"
 * format (only for date and time)
 
 ### Available block options
-* block_strong (set parent option value to children validator options)
+* block_option (set per validation block option to children's validator options)
+   * strong
 
 ## Tips
 WeakParameters.stats returns its validation metadata, and this is useful for auto-generating API documents.
