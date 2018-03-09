@@ -2,6 +2,8 @@ module WeakParameters
   class Validator
     attr_reader :block, :controller
 
+    BLOCK_OPTIONS = [:strong]
+
     def initialize(controller, block_options = {}, &block)
       @controller = controller
       @block_options = block_options
@@ -24,7 +26,9 @@ module WeakParameters
 
     def converted_options
       @converted_options ||= {}.tap do |stash|
-        stash.merge!(@block_options[:block_option]) if @block_options[:block_option]
+        if @block_options[:block_option]
+          stash.merge!(@block_options[:block_option].select{ |key, _v| BLOCK_OPTIONS.include?(key) })
+        end
       end
     end
 
