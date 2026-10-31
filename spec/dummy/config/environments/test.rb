@@ -8,7 +8,7 @@ Dummy::Application.configure do
   config.cache_classes = true
 
   # Configure static asset server for tests with Cache-Control for performance
-  config.serve_static_assets = true
+  config.public_file_server.enabled = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -20,10 +20,6 @@ Dummy::Application.configure do
   # Disable request forgery protection in test environment
   config.action_controller.allow_forgery_protection    = false
 
-  # Tell Action Mailer not to deliver emails to the real world.
-  # The :test delivery method accumulates sent emails in the
-  # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr

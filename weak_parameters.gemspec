@@ -1,7 +1,6 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "weak_parameters/version"
+# frozen_string_literal: true
+
+require_relative "lib/weak_parameters/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "weak_parameters"
@@ -12,17 +11,15 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/r7kamura/weak_parameters"
   spec.license       = "MIT"
 
+  spec.metadata["homepage_uri"] = spec.homepage
+  spec.metadata["source_code_uri"] = spec.homepage
+  spec.metadata["changelog_uri"] = "#{spec.homepage}/releases"
+  spec.metadata["rubygems_mfa_required"] = "true"
+
+  spec.required_ruby_version = ">= 3.3"
+
   spec.files         = `git ls-files`.split($/)
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
   spec.add_dependency "rails", ">= 4.0.0"
-  spec.add_development_dependency "autodoc"
-  spec.add_development_dependency "bundler", "~> 1.3"
-  spec.add_development_dependency "pry-rails"
-  spec.add_development_dependency "rake"
-  spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "sqlite3"
-  spec.add_development_dependency "test-unit"
 end
