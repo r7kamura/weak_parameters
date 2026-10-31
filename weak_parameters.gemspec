@@ -11,6 +11,8 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/r7kamura/weak_parameters"
   spec.license       = "MIT"
 
+  spec.required_ruby_version = ">= 3.3"
+
   spec.files         = `git ls-files`.split($/)
   spec.require_paths = ["lib"]
 
